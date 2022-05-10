@@ -30,6 +30,7 @@ def downloader(url, path):
                 data = json.load(fl)
             download_url = data['url']
             full_title = data['fulltitle']
+            os.remove(f'tmp/{json_file[0]}')
 
             with open(f'{path}/{full_title}.mp3', 'wb') as fl:
                 fl.write(requests.get(download_url, stream=True).content)
